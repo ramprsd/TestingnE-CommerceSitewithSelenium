@@ -15,23 +15,22 @@ public class Hooks {
         System.out.println("Browser opens...");
         BaseCode.browserInvocation();
     }
-//    @BeforeStep
-//    public void beforeScreenshot(Scenario s){
-//
-//        byte[] ss = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-//        s.attach(ss, "image/png",s.getName());
-//    }
-//    @AfterStep
-//    public void takeScreenshot(Scenario s){
-//
-//        byte[] ss = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-//        s.attach(ss, "image/png",s.getName());
-//
-//    }
+    @BeforeStep
+    public void beforeScreenshot(Scenario s){
+
+        byte[] ss = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        s.attach(ss, "image/png",s.getName());
+    }
+    @AfterStep
+    public void takeScreenshot(Scenario s){
+
+        byte[] ss = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        s.attach(ss, "image/png",s.getName());
+
+    }
     @After
     public void tearDown(){
         System.out.println("Browser closes...");
-//        driver.close();
-//        driver.quit();
+        driver.quit();
     }
 }
